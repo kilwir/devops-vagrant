@@ -18,4 +18,4 @@ plugins:
   - github-api.hpi
 
 jobs:
-  - books-service
+  - bank-service

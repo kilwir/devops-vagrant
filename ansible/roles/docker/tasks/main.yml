@@ -19,7 +19,7 @@
 - name: Debian docker-py is present
   pip:
     name: docker-py
-    version: 1.6.0
+    version: 1.10.5
     state: present
   tags: [docker]
 
@@ -29,6 +29,12 @@
     dest: /etc/default/docker
   register: copy_result
   tags: [docker]
+
+- name: Ensure docker-compose is installed and available
+  shell: curl -L https://github.com/docker/compose/releases/download/1.7.0-rc1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+- name: Ensure docker-compose has executable
+  shell: chmod +x /usr/local/bin/docker-compose
 
 - name: Docker service is restarted
   service:

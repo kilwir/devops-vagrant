@@ -1,0 +1,11 @@
+- name: Remove previous version
+  shell: rm -rf api
+  tags: [bank-service]
+
+- name: Latest container is pulled
+  shell: git clone https://github.com/kilwir/devops-bank-api.git api
+  tags: [bank-service]
+
+- name: Container is started
+  shell: cd api && sh build-api.sh
+  tags: [bank-service]
